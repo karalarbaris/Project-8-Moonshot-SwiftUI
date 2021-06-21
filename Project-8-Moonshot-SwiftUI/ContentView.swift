@@ -7,10 +7,24 @@
 
 import SwiftUI
 
+//Resizing images to fit the screen using GeometryReader
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            GeometryReader { geo in
+                Image("pic1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geo.size.width)
+            }
+            
+//            Image("pic1")
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 300, height: 300, alignment: .center)
+                
+        }
     }
 }
 
