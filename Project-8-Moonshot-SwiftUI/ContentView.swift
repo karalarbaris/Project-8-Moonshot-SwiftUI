@@ -7,33 +7,74 @@
 
 import SwiftUI
 
+//Working with hierarchical Codable data
+
 //Pushing new views onto the stack using NavigationLink
+
+struct User: Codable {
+    var name: String
+    var address: Address
+}
+
+struct Address: Codable {
+    var street: String
+    var city: String
+}
 
 struct ContentView: View {
     var body: some View {
-  
-        NavigationView {
-            List(0..<100) { row in
-                NavigationLink(
-                    destination: Text("Detail \(row)"),
-                    label: {
-                        Text("Row \(row)")
-                    })
-            }
-            .navigationBarTitle("SwiftUI")
-        }
         
-//        NavigationView {
-//            VStack {
-//                NavigationLink(destination: Text("Detail View"), label: {
-//                    Text("Helloo oowowoow")
-//                })
-//            }
-//            .navigationBarTitle("SwiftUI")
-//        }
+        Button("Decode JSON") {
+            let input = """
+           {
+              "name": "Taylor Swift",
+              "address": {
+                 "street": "555, Taylor Swift Avenue",
+                 "city": "Nashville"
+              }
+        }
+        """
+            
+            let data = Data(input.utf8)
+            let decoder = JSONDecoder()
+            
+            if let user = try? decoder.decode(User.self, from: data) {
+                print(user.address.street)
+            }
+            
+        }
         
     }
 }
+
+
+////Pushing new views onto the stack using NavigationLink
+//
+//struct ContentView: View {
+//    var body: some View {
+//
+//        NavigationView {
+//            List(0..<100) { row in
+//                NavigationLink(
+//                    destination: Text("Detail \(row)"),
+//                    label: {
+//                        Text("Row \(row)")
+//                    })
+//            }
+//            .navigationBarTitle("SwiftUI")
+//        }
+//
+////        NavigationView {
+////            VStack {
+////                NavigationLink(destination: Text("Detail View"), label: {
+////                    Text("Helloo oowowoow")
+////                })
+////            }
+////            .navigationBarTitle("SwiftUI")
+////        }
+//
+//    }
+//}
 
 
 
