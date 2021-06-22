@@ -7,47 +7,79 @@
 
 import SwiftUI
 
-//How ScrollView lets us work with scrolling data
-
-struct CustomText: View {
-
-    var text: String
-    
-    var body: some View {
-
-        Text(text)
-
-    }
-    
-    init(text: String) {
-        print("creating a new custom text")
-        self.text = text
-    }
-}
+//Pushing new views onto the stack using NavigationLink
 
 struct ContentView: View {
     var body: some View {
-
-        //is creating all of them at once
-        ScrollView(.vertical) {
-            VStack(spacing: 10) {
-                ForEach(0..<100) {
-                    CustomText(text: "Item \($0)")
-                        .font(.title)
-                }
+  
+        NavigationView {
+            List(0..<100) { row in
+                NavigationLink(
+                    destination: Text("Detail \(row)"),
+                    label: {
+                        Text("Row \(row)")
+                    })
             }
-            .frame(maxWidth: .infinity)
+            .navigationBarTitle("SwiftUI")
         }
         
-        //creating it lazily
-//        List {
-//           ForEach(0..<100) {
-//              CustomText(text: "Item \($0)")
-//                 .font(.title)
-//        } }
-
+//        NavigationView {
+//            VStack {
+//                NavigationLink(destination: Text("Detail View"), label: {
+//                    Text("Helloo oowowoow")
+//                })
+//            }
+//            .navigationBarTitle("SwiftUI")
+//        }
+        
     }
 }
+
+
+
+
+
+////How ScrollView lets us work with scrolling data
+//
+//struct CustomText: View {
+//
+//    var text: String
+//
+//    var body: some View {
+//
+//        Text(text)
+//
+//    }
+//
+//    init(text: String) {
+//        print("creating a new custom text")
+//        self.text = text
+//    }
+//}
+//
+//struct ContentView: View {
+//    var body: some View {
+//
+//        //is creating all of them at once
+//        ScrollView(.vertical) {
+//            VStack(spacing: 10) {
+//                ForEach(0..<100) {
+//                    CustomText(text: "Item \($0)")
+//                        .font(.title)
+//                }
+//            }
+//            .frame(maxWidth: .infinity)
+//        }
+//
+//        //creating it lazily
+////        List {
+////           ForEach(0..<100) {
+////              CustomText(text: "Item \($0)")
+////                 .font(.title)
+////        } }
+//
+//    }
+//}
 
 
 //struct ContentView: View {
