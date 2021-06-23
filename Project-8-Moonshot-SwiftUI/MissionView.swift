@@ -18,7 +18,7 @@ struct MissionView: View {
     let astronauts: [CrewMember]
     
     var body: some View {
-
+        
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
@@ -30,25 +30,31 @@ struct MissionView: View {
                     
                     Text(mission.description)
                         .padding()
-   
+                    
                     
                     ForEach(astronauts, id: \.role) { crewMember in
-                        HStack {
-                            Image(crewMember.astronaut.id)
-                                .resizable()
-                                .frame(width: 83, height: 60, alignment: .center)
-                                .clipShape(Capsule())
-                                .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                        
+                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                             
-                            VStack(alignment: .leading) {
-                                Text(crewMember.astronaut.name)
-                                    .font(.headline)
-                                Text(crewMember.role)
-                                    .foregroundColor(.secondary)
+                            HStack {
+                                Image(crewMember.astronaut.id)
+                                    .resizable()
+                                    .frame(width: 83, height: 60, alignment: .center)
+                                    .clipShape(Capsule())
+                                    .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                                
+                                VStack(alignment: .leading) {
+                                    Text(crewMember.astronaut.name)
+                                        .font(.headline)
+                                    Text(crewMember.role)
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
                             }
-                            Spacer()
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
+                        .buttonStyle(PlainButtonStyle())
+                        
                     }
                     
                     

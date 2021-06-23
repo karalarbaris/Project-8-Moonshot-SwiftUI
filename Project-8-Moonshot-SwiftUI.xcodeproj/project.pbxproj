@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		156468182683D51800BD9708 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156468172683D51800BD9708 /* AstronautView.swift */; };
 		157C834C26827FF1006C4A29 /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = 157C834A26827FF1006C4A29 /* astronauts.json */; };
 		157C834D26827FF1006C4A29 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 157C834B26827FF1006C4A29 /* missions.json */; };
 		157C834F268280FB006C4A29 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157C834E268280FB006C4A29 /* Astronaut.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		156468172683D51800BD9708 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 		157C834A26827FF1006C4A29 /* astronauts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
 		157C834B26827FF1006C4A29 /* missions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
 		157C834E268280FB006C4A29 /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				157C834E268280FB006C4A29 /* Astronaut.swift */,
 				157C83522682F813006C4A29 /* Mission.swift */,
 				157C83502682828E006C4A29 /* Bundle-Decodable.swift */,
+				156468172683D51800BD9708 /* AstronautView.swift */,
 				15D387582680F5FA005A929B /* Preview Content */,
 			);
 			path = "Project-8-Moonshot-SwiftUI";
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				156468182683D51800BD9708 /* AstronautView.swift in Sources */,
 				157C834F268280FB006C4A29 /* Astronaut.swift in Sources */,
 				15D387552680F5F5005A929B /* ContentView.swift in Sources */,
 				15D387532680F5F5005A929B /* Project_8_Moonshot_SwiftUIApp.swift in Sources */,
