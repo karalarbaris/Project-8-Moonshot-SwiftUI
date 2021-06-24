@@ -16,6 +16,8 @@ struct ContentView: View {
     let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
+    @State private var showingCrewNames = false
+    
     var body: some View {
         
         NavigationView {
@@ -24,22 +26,39 @@ struct ContentView: View {
                     Image(mission.image)
                         .resizable()
                         //Same as scaledToFit()
-//                        .aspectRatio(contentMode: .fit)
+                        //                        .aspectRatio(contentMode: .fit)
                         .scaledToFit()
                         .frame(width: 44, height: 44)
-
+                    
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)
-                        Text(mission.formattedLaunchDate)
+                        Text(showingCrewNames ? crewNames(mission: mission): mission.formattedLaunchDate)
                     }
+                    
                 }
             }
             .navigationBarTitle("Moonshot")
+            .navigationBarItems(trailing: Button(action: {
+                showingCrewNames.toggle()
+            }, label: {
+                Text(showingCrewNames ? "Crew": "Date")
+            }))
+
         }
         
         
         
+    }
+    
+    func crewNames(mission: Mission) -> String {
+        
+        var missionNames = [String]()
+        for crew in mission.crew {
+            missionNames.append(crew.name.capitalized)
+        }
+        
+        return missionNames.joined(separator: ", ")
     }
 }
 
