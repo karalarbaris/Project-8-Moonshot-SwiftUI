@@ -37,11 +37,16 @@ struct MissionView: View {
                         NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                             
                             HStack {
-                                Image(crewMember.astronaut.id)
-                                    .resizable()
-                                    .frame(width: 83, height: 60, alignment: .center)
-                                    .clipShape(Capsule())
-                                    .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                                VStack {
+                                    Image(crewMember.astronaut.id)
+                                        .resizable()
+                                        .frame(width: 83, height: 60, alignment: .center)
+                                        .clipShape(Capsule())
+                                        .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                                    
+                                    Text(mission.formattedLaunchDate)
+                                }
+                                
                                 
                                 VStack(alignment: .leading) {
                                     Text(crewMember.astronaut.name)
